@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reproductor IPTV</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      background: black;
+    }
+  </style>
+</head>
+<body>
+  <video id="videoPlayer" controls autoplay></video>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const streamUrl = urlParams.get("stream");
+
+    const player = document.getElementById("videoPlayer");
+
+    if (streamUrl) {
+      player.src = decodeURIComponent(streamUrl);
+    } else {
+      document.body.innerHTML = "<p style='color:white'>No se encontró el stream</p>";
+    }
+  </script>
+</body>
+</html>
